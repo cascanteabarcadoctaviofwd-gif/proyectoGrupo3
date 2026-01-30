@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGB | Panel de Evaluación</title>
+    <link rel="stylesheet" href="../Styles/home.css">
+</head>
+
+<body>
+    <div class="container" style="max-width: 1100px; padding: 4rem 0;">
+        <header style="text-align: center; margin-bottom: 4rem;">
+            <p
+                style="text-transform: uppercase; letter-spacing: 3px; color: var(--secondary); font-weight: 600; font-size: 0.8rem; margin-bottom: 1rem;">
+                Administración</p>
+            <h1 style="font-size: 3rem;">Panel de Evaluación</h1>
+            <div
+                style="background: rgba(239, 68, 68, 0.1); border: 1px solid #ef4444; color: #b91c1c; padding: 0.8rem; border-radius: 8px; display: inline-block; margin-top: 1rem; font-size: 0.9rem; font-weight: 600;">
+                🔒 Acceso restringido: Solo para personal evaluador autorizado
+            </div>
+        </header>
+
+        <div id="evalListArea">
+            <div class="glass-card" style="padding: 2rem;">
+                <h2 style="margin-bottom: 2rem; font-family: 'Playfair Display', serif;">Solicitudes Pendientes</h2>
+                <table class="history-table">
+                    <thead>
+                        <tr>
+                            <th>Postulante</th>
+                            <th>Beca</th>
+                            <th>Estado</th>
+                            <th style="text-align: right;">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="eval-list-body">
+                        <!-- Dinámico -->
+                    </tbody>
+                </table>
+                <div id="no-pending-msg" style="text-align: center; padding: 4rem; display: none;">
+                    <p style="font-size: 1rem; color: var(--text-light); font-style: italic;">No hay solicitudes
+                        pendientes de evaluación.</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="history.html" class="btn btn-secondary" style="text-decoration: none;">Regresar al
+                    Historial</a>
+            </div>
+        </div>
+
+        <!-- Panel de Evaluación Individual -->
+        <div id="evalDetailArea" style="display: none;">
+            <div class="glass-card" style="padding: 3rem;">
+                <div
+                    style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 3rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 1.5rem;">
+                    <div>
+                        <h2 id="evalName" style="font-size: 1.8rem; margin: 0;">Nombre del Postulante</h2>
+                        <p id="evalBeca" style="color: var(--secondary); font-weight: 600; margin-top: 0.5rem;">Beca: -
+                        </p>
+                        <p id="evalAcademico" style="font-size: 0.9rem; color: #64748b; margin-top: 0.3rem;">Estado
+                            Académico: -</p>
+                        <p id="evalIngresos" style="font-size: 0.9rem; color: #64748b; margin-top: 0.3rem;">Ingresos
+                            Reportados: ₡0</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <span id="evalId" style="font-size: 0.8rem; color: #94a3b8;">ID: -</span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <!-- Column Left: Evaluation Info -->
+                    <div style="padding-right: 2rem; border-right: 1px solid #e2e8f0;">
+                        <h3 style="margin-bottom: 1.5rem; font-size: 1.1rem; color: var(--primary);">Puntajes por
+                            Criterio</h3>
+
+                        <div class="form-group">
+                            <label class="form-label">Económica (0 - 40)</label>
+                            <input type="number" id="scoreEconomic" class="form-control score-input" min="0" max="40"
+                                value="0">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Académica (0 - 30)</label>
+                            <input type="number" id="scoreAcademic" class="form-control score-input" min="0" max="30"
+                                value="0">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="form-label">Social (0 - 30)</label>
+                            <input type="number" id="scoreSocial" class="form-control score-input" min="0" max="30"
+                                value="0">
+                        </div>
+
+                        <div
+                            style="background: var(--bg-light); padding: 1.5rem; border-radius: 8px; text-align: center; margin-top: 2rem;">
+                            <span
+                                style="display: block; font-size: 0.8rem; text-transform: uppercase; color: #64748b;">Puntaje
+                                Total Automático</span>
+                            <strong id="scoreTotal" style="font-size: 2.5rem; color: var(--primary);">00</strong>
+                            <span style="display: block; font-size: 0.8rem; color: #94a3b8;">/ 100 puntos</span>
+                        </div>
+                    </div>
+
+                    <!-- Column Right: Observations & Recommendation -->
+                    <div style="padding-left: 2rem;">
+                        <h3 style="margin-bottom: 1.5rem; font-size: 1.1rem; color: var(--primary);">Dictamen Final</h3>
+
+                        <div class="form-group">
+                            <label class="form-label">Observaciones del Evaluador</label>
+                            <textarea id="observations" class="form-control" rows="6"
+                                placeholder="Ingrese los motivos de la decisión..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Recomendación final</label>
+                            <select id="recommendation" class="form-control">
+                                <option value="Aprobada">Aceptar / Aprobar Solicitud</option>
+                                <option value="Rechazada">Rechazar Solicitud</option>
+                                <option value="En revisión" selected>Mantener en Revisión</option>
+                            </select>
+                        </div>
+
+                        <div style="display: flex; gap: 1.5rem; margin-top: 3rem;">
+                            <button onclick="submitEvaluation()" class="btn btn-primary" style="flex: 2;">Confirmar
+                                Evaluación</button>
+                            <button onclick="hideDetail()" class="btn btn-secondary" style="flex: 1;">Volver</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../Js/scholarships.js"></script>
+    <script>
+        let currentEvalId = null;
+
+        function loadEvalList() {
+            const listBody = document.getElementById('eval-list-body');
+            const noMsg = document.getElementById('no-pending-msg');
+            const apps = getApplications().filter(a => a.status === 'Enviada' || a.status === 'En revisión' || a.status === 'Pendiente' || a.status === 'Apta');
+
+            if (apps.length === 0) {
+                listBody.innerHTML = '';
+                noMsg.style.display = 'block';
+                return;
+            }
+
+            noMsg.style.display = 'none';
+            listBody.innerHTML = apps.map(app => `
+                <tr>
+                    <td><strong>${app.personalData.name}</strong></td>
+                    <td>${app.type}</td>
+                    <td><span class="status ${getStatusClass(app.status)}">${app.status}</span></td>
+                    <td style="text-align: right;">
+                        <button onclick="showDetail(${app.id})" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.75rem;">Evaluar</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function showDetail(id) {
+            const app = getApplications().find(a => a.id === id);
+            if (!app) return;
+
+            currentEvalId = id;
+            document.getElementById('evalName').innerText = app.personalData.name;
+            document.getElementById('evalBeca').innerText = `Beca: ${app.type}`;
+            document.getElementById('evalId').innerText = `ID: ${app.id}`;
+
+            // Detalle Académico
+            const eduLevel = app.education.level || app.education;
+            const eduStatus = app.education.status || 'N/A';
+            const hasEduDoc = app.education.hasDoc;
+            const docType = eduStatus === 'Finalizado' ? 'Título' : 'Constancia';
+
+            document.getElementById('evalAcademico').innerHTML = `Nivel: ${eduLevel} (${eduStatus}) ${hasEduDoc ? `| <span style="color: #16a34a;">📄 ${docType} Adjunto</span>` : '| <span style="color: #dc2626;">❌ Sin documento</span>'}`;
+
+            const salary = app.socioeconomic.salary || 0;
+            const pension = app.socioeconomic.pensionAmount || 0;
+            const hasPension = app.socioeconomic.hasPension;
+
+            let incomeDetail = `Salario: ₡${salary.toLocaleString()}`;
+            if (hasPension) {
+                incomeDetail += ` | Pensión: ₡${pension.toLocaleString()} 📄 (Adjunto)`;
+            }
+            document.getElementById('evalIngresos').innerText = incomeDetail;
+            document.getElementById('evalIngresos').style.color = '#0ea5e9';
+            document.getElementById('evalIngresos').style.fontWeight = 'bold';
+
+            // Set initial values from previous evaluation if exists
+            document.getElementById('scoreEconomic').value = app.evaluation.scoreEconomic || 0;
+            document.getElementById('scoreAcademic').value = app.evaluation.scoreAcademic || 0;
+            document.getElementById('scoreSocial').value = app.evaluation.scoreSocial || 0;
+            document.getElementById('observations').value = app.evaluation.observations || '';
+            document.getElementById('recommendation').value = app.status;
+
+            calculateTotal();
+
+            document.getElementById('evalListArea').style.display = 'none';
+            document.getElementById('evalDetailArea').style.display = 'block';
+        }
+
+        function hideDetail() {
+            currentEvalId = null;
+            document.getElementById('evalListArea').style.display = 'block';
+            document.getElementById('evalDetailArea').style.display = 'none';
+            loadEvalList();
+        }
+
+        function calculateTotal() {
+            const e = parseInt(document.getElementById('scoreEconomic').value) || 0;
+            const a = parseInt(document.getElementById('scoreAcademic').value) || 0;
+            const s = parseInt(document.getElementById('scoreSocial').value) || 0;
+            const total = e + a + s;
+            document.getElementById('scoreTotal').innerText = total.toString().padStart(2, '0');
+        }
+
+        // Auto calculate on input
+        document.querySelectorAll('.score-input').forEach(input => {
+            input.addEventListener('input', calculateTotal);
+        });
+
+        function submitEvaluation() {
+            const evalData = {
+                scoreEconomic: document.getElementById('scoreEconomic').value,
+                scoreAcademic: document.getElementById('scoreAcademic').value,
+                scoreSocial: document.getElementById('scoreSocial').value,
+                observations: document.getElementById('observations').value,
+                recommendation: document.getElementById('recommendation').value
+            };
+
+            const finalStatus = evalData.recommendation;
+
+            if (evaluateApplication(currentEvalId, evalData, finalStatus)) {
+                alert('Evaluación guardada con éxito.');
+                hideDetail();
+            } else {
+                alert('Error al guardar la evaluación.');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Simple visual check to emphasize it's for evaluators
+            const isEvaluator = confirm('¿Confirmas que eres un evaluador autorizado? Esta sección es de acceso restringido.');
+            if (!isEvaluator) {
+                window.location.href = 'history.html';
+                return;
+            }
+            loadEvalList();
+        });
+    </script>
+</body>
+
+</html>
