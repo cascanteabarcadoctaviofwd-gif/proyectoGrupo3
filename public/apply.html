@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGB | Nueva Postulación</title>
+    <link rel="stylesheet" href="../Styles/home.css">
+</head>
+
+<body>
+    <div class="container" style="max-width: 900px; padding: 4rem 0;">
+        <header style="text-align: center; margin-bottom: 4rem;">
+            <p
+                style="text-transform: uppercase; letter-spacing: 3px; color: var(--secondary); font-weight: 600; font-size: 0.8rem; margin-bottom: 1rem;">
+                Formulario Oficial</p>
+            <h1 style="font-size: 3rem;">Postulación de Beca</h1>
+        </header>
+
+        <form id="scholarshipForm" class="glass-card" style="padding: 4rem;">
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 1rem;">
+                <h2 style="font-size: 1.5rem; margin: 0;">Registro de Datos</h2>
+                <div id="prob-container" style="display: none; text-align: right;">
+                    <span id="prob-badge" class="status-badge">Probabilidad: 0%</span>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label">Nombre Completo</label>
+                    <input type="text" id="name" class="form-control" placeholder="Juan Pérez" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Correo Electrónico</label>
+                    <input type="email" id="email" class="form-control" placeholder="juan@ejemplo.com" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label">Edad</label>
+                    <input type="number" id="age" class="form-control" placeholder="18" required min="10" max="100">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Tipo de Beca</label>
+                    <select id="scholarshipType" class="form-control" required>
+                        <option value="">Seleccione una...</option>
+                        <option value="Excelencia Académica">Excelencia Académica</option>
+                        <option value="Talento Deportivo">Talento Deportivo</option>
+                        <option value="Investigación e Innovación">Investigación e Innovación</option>
+                        <option value="Servicio Social">Servicio Social</option>
+                        <option value="Talento Artístico">Talento Artístico</option>
+                        <option value="Apoyo Económico">Apoyo Económico</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label">Nivel Educativo</label>
+                    <select id="education" class="form-control" required>
+                        <option value="Primaria">Primaria</option>
+                        <option value="Secundaria">Secundaria</option>
+                        <option value="Universitario" selected>Universitario</option>
+                        <option value="Posgrado">Posgrado</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Estado Académico</label>
+                    <select id="academicStatus" class="form-control" required>
+                        <option value="En curso">En curso</option>
+                        <option value="Finalizado">Finalizado</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Sección de Documento Académico -->
+            <div class="form-group"
+                style="background: rgba(14, 165, 233, 0.05); padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; border: 1px dashed var(--secondary); max-width: 500px;">
+                <label class="form-label" id="academicDocLabel" style="font-size: 0.85rem;">Adjuntar Constancia de
+                    Estudio (PDF/JPG)</label>
+                <input type="file" id="academicDoc" class="form-control" accept=".pdf,.jpg,.jpeg,.png"
+                    style="padding: 0.3rem;" required>
+                <p id="academicDocHint"
+                    style="font-size: 0.75rem; color: #64748b; margin-top: 0.5rem; font-style: italic;">
+                    * Obligatorio para validar su nivel educativo reportado.
+                </p>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label">Salario Mensual (₡)</label>
+                    <input type="number" id="salary" class="form-control" placeholder="Ej: 400000" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">¿Recibe pensión?</label>
+                    <select id="hasPension" class="form-control" required>
+                        <option value="no">No</option>
+                        <option value="si">Sí</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Sección Condicional de Pensión -->
+            <div id="pensionSection"
+                style="display: none; background: rgba(14, 165, 233, 0.05); padding: 1rem 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; border: 1px solid rgba(14, 165, 233, 0.2); animation: fadeIn 0.3s ease; max-width: 600px;">
+                <div class="form-row" style="gap: 1.5rem;">
+                    <div class="form-group" style="flex: 1;">
+                        <label class="form-label" style="font-size: 0.85rem;">Monto de Pensión (₡)</label>
+                        <input type="number" id="pensionAmount" class="form-control" placeholder="Ej: 150000">
+                    </div>
+                    <div class="form-group" style="flex: 1.5;">
+                        <label class="form-label" style="font-size: 0.85rem;">Comprobante de Pensión</label>
+                        <input type="file" id="pensionDoc" class="form-control" accept=".pdf,.jpg,.jpeg,.png">
+                        <small style="color: #64748b; font-size: 0.75rem; margin-top: 0.5rem; display: block;">*
+                            Obligatorio si recibe pensión</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Situación Socioeconómica</label>
+                <textarea id="situation" class="form-control" rows="3"
+                    placeholder="Describa brevemente su situación familiar y económica..." required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Motivo de la Solicitud</label>
+                <textarea id="reason" class="form-control" rows="3" placeholder="¿Por qué necesita esta beca?"
+                    required></textarea>
+            </div>
+
+            <!-- Contenedor Dinámico de Requisitos -->
+            <div id="requirementsSection" class="requirements-container">
+                <div class="requirements-title">
+                    <span>📋</span> Requisitos Obligatorios
+                </div>
+                <div id="requirementsList">
+                    <!-- Checkboxes generados por JS -->
+                </div>
+                <p style="font-size: 0.8rem; color: #64748b; margin-top: 1rem; font-style: italic;">
+                    * Asegúrese de cumplir con todos los criterios antes de enviar su solicitud.
+                </p>
+            </div>
+
+            <div style="display: flex; gap: 2rem; margin-top: 3rem;">
+                <button type="submit" class="btn btn-primary" style="flex: 2;">Enviar Postulación</button>
+                <a href="history.html" class="btn btn-secondary"
+                    style="flex: 1; text-align: center; text-decoration: none; display: flex; align-items: center; justify-content: center;">Cancelar</a>
+            </div>
+        </form>
+
+        <div id="resultArea" style="display: none;">
+            <div class="result-card">
+                <h3 id="resultTitle" style="margin-bottom: 1rem;">Resultado de Evaluación</h3>
+                <p id="resultDesc">Analizando perfil socioeconómico...</p>
+
+                <div class="probability-meter">
+                    <div id="probFill" class="probability-fill" style="width: 0%"></div>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span id="labelStatus" class="status-badge status-pendiente">Pendiente</span>
+                    <strong id="probText" style="font-size: 1.2rem; color: var(--primary);">Probabilidad: 0%</strong>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="history.html" class="btn btn-primary">Ver en mi Historial</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../Js/scholarships.js"></script>
+    <script>
+        const REQUIREMENTS_MAP = {
+            'Excelencia Académica': [
+                'Promedio académico mínimo alto (ej. 16/20, 4.0/5.0 o equivalente).',
+                'No haber reprobado asignaturas en el último período.',
+                'Estar matriculado en una institución educativa reconocida.',
+                'Historial académico actualizado.',
+                'Carta de compromiso para mantener el rendimiento académico.'
+            ],
+            'Talento Deportivo': [
+                'Pertenecer a una disciplina deportiva reconocida.',
+                'Acreditar participación en competencias oficiales (locales, regionales o nacionales).',
+                'Certificado emitido por entrenador o federación.',
+                'Mantener rendimiento académico mínimo.',
+                'Compromiso de representación institucional en eventos deportivos.'
+            ],
+            'Investigación e Innovación': [
+                'Presentar un proyecto de investigación o innovación.',
+                'Carta de aval de un docente o tutor.',
+                'Evidencia de participación en investigaciones, ferias científicas o publicaciones.',
+                'Estar matriculado en una carrera afín al proyecto.',
+                'Compromiso de entrega de resultados o informes.'
+            ],
+            'Servicio Social': [
+                'Acreditar participación en actividades de servicio comunitario.',
+                'Certificado de horas de servicio (ej. mínimo 100 horas).',
+                'Carta de recomendación de la organización beneficiaria.',
+                'Carta de motivación social.',
+                'Buen comportamiento académico y disciplinario.'
+            ],
+            'Talento Artístico': [
+                'Demostrar habilidades en un área artística (música, danza, teatro, pintura, etc.).',
+                'Portafolio artístico o registro audiovisual.',
+                'Certificado o carta de un instructor o institución cultural.',
+                'Participación en eventos culturales.',
+                'Compromiso de participación en actividades artísticas institucionales.'
+            ],
+            'Apoyo Económico': [
+                'Pertenecer a un hogar de bajos recursos económicos.',
+                'Presentar documentación de ingresos familiares.',
+                'No contar con otra beca económica similar.',
+                'Estar matriculado y activo académicamente.',
+                'Informe socioeconómico o ficha social.'
+            ]
+        };
+
+        const typeSelect = document.getElementById('scholarshipType');
+        const reqSection = document.getElementById('requirementsSection');
+        const reqList = document.getElementById('requirementsList');
+        const academicStatusSelect = document.getElementById('academicStatus');
+        const academicDocLabel = document.getElementById('academicDocLabel');
+        const hasPensionSelect = document.getElementById('hasPension');
+        const pensionSection = document.getElementById('pensionSection');
+
+        academicStatusSelect.addEventListener('change', function () {
+            if (this.value === 'Finalizado') {
+                academicDocLabel.innerText = 'Adjuntar Título (PDF/JPG)';
+            } else {
+                academicDocLabel.innerText = 'Adjuntar Constancia de Estudio (PDF/JPG)';
+            }
+        });
+
+        hasPensionSelect.addEventListener('change', function () {
+            pensionSection.style.display = this.value === 'si' ? 'block' : 'none';
+            const pensionAmountInput = document.getElementById('pensionAmount');
+            const pensionDocInput = document.getElementById('pensionDoc');
+            if (this.value === 'no') {
+                pensionAmountInput.value = '';
+                pensionDocInput.value = '';
+            }
+            pensionAmountInput.required = (this.value === 'si');
+            pensionDocInput.required = (this.value === 'si');
+        });
+
+        typeSelect.addEventListener('change', function () {
+            const selectedType = this.value;
+            if (selectedType && REQUIREMENTS_MAP[selectedType]) {
+                reqList.innerHTML = `
+                    <ul style="list-style: none; padding: 0;">
+                        ${REQUIREMENTS_MAP[selectedType].map(req => `
+                            <li class="requirement-item" style="cursor: default;">
+                                <span style="color: var(--secondary);">•</span>
+                                <span class="requirement-text">${req}</span>
+                            </li>
+                        `).join('')}
+                    </ul>
+                `;
+                reqSection.style.display = 'block';
+            } else {
+                reqSection.style.display = 'none';
+                reqList.innerHTML = '';
+            }
+        });
+
+        document.getElementById('scholarshipForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                age: parseInt(document.getElementById('age').value),
+                scholarshipType: document.getElementById('scholarshipType').value,
+                education: document.getElementById('education').value,
+                academicStatus: document.getElementById('academicStatus').value,
+                hasAcademicDoc: document.getElementById('academicDoc').files.length > 0,
+                salary: parseFloat(document.getElementById('salary').value) || 0,
+                hasPension: document.getElementById('hasPension').value === 'si',
+                pensionAmount: parseFloat(document.getElementById('pensionAmount').value) || 0,
+                income: (parseFloat(document.getElementById('salary').value) || 0) + (parseFloat(document.getElementById('pensionAmount').value) || 0),
+                situation: document.getElementById('situation').value,
+                reason: document.getElementById('reason').value
+            };
+
+            // Validaciones adicionales
+            if (formData.age < 12) {
+                alert('La edad mínima para postular es de 12 años.');
+                return;
+            }
+
+            const result = saveApplication(formData);
+
+            // Visualización de resultados
+            document.getElementById('scholarshipForm').style.display = 'none';
+            document.getElementById('resultArea').style.display = 'block';
+
+            const probFill = document.getElementById('probFill');
+            const probText = document.getElementById('probText');
+            const labelStatus = document.getElementById('labelStatus');
+            const resultTitle = document.getElementById('resultTitle');
+            const resultDesc = document.getElementById('resultDesc');
+
+            setTimeout(() => {
+                probFill.style.width = result.probability + '%';
+                probText.innerText = `Probabilidad: ${result.probability}%`;
+                labelStatus.innerText = result.status;
+                labelStatus.className = `status-badge status-${result.status.toLowerCase().replace(' ', '-')}`;
+
+                if (result.status === 'Apta') {
+                    resultTitle.innerText = '¡Felicidades! Perfil Excelente';
+                    resultDesc.innerHTML = 'Tu situación socioeconómica y perfil académico cumplen ampliamente con los requisitos. Se ha pre-aprobado tu solicitud.';
+                } else if (result.status === 'No apta') {
+                    resultTitle.innerText = 'Evaluación Preliminar Negativa';
+                    resultDesc.innerHTML = `Lo sentimos, según los datos ingresados no cumples con los criterios mínimos:<br><strong style="color: #991b1b;">${result.reason || 'Puntaje insuficiente'}</strong>.`;
+                } else {
+                    resultTitle.innerText = 'Solicitud en Revisión';
+                    resultDesc.innerText = 'Tu perfil está dentro de los márgenes competitivos. Un asesor revisará manualmente tu situación socioeconómica.';
+                }
+            }, 100);
+        });
+    </script>
+</body>
+
+</html>
