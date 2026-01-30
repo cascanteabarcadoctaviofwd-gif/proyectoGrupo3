@@ -1,0 +1,13 @@
+{
+    "usuarios": [
+        {
+            "id": 0,
+            "nombre": "Katia",
+            "apellido": "Cascan",
+            "email": "katia@gmail.com",
+            "password": "1234",
+            "tipo": "postulante"
+        }
+    ],
+    "reportes": []
+}
