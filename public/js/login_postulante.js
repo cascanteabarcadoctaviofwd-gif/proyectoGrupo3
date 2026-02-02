@@ -1,29 +1,41 @@
-const btnLogin = document.getElementById("btnLogin");
+const formLogin = document.getElementById("formLogin");
 const mensaje = document.getElementById("mensaje");
 
-btnLogin.addEventListener("click", function () {
+console.log("JS de login cargado");
+
+formLogin.addEventListener("submit", function (evento) {
+    evento.preventDefault();
 
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
-    
-    if (email === "" || password === ""){
+
+    if (email === "" || password === "") {
         mensaje.textContent = "Completa todos los campos";
         return;
     }
 
-    const usuariosRegistrados = JSON.parse(localStorage.getItem("usuariosRegistrados")) || [];
+    fetch("http://localhost:2929/api/login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            email,
+            password
+        })
+    })
 
+        .then(res => res.json())
+        .then(data => {
+            mensaje.textContent = data.message;
 
-    const usuarioValido = usuariosRegistrados.find(
-        usuario => usuario.email === email 
-        && usuario.password === password
-    );
-
-    if (usuarioValido){
-        mensaje.textContent = "Inicio de sesion exitoso";
-        window.location.href = "../html/home.html";
-
-    }else{
-        mensaje.textContent = "Correo o contraseña incorrectos";
-    };
-})
+            if (data.ok) {
+                localStorage.setItem("correoUsuario", email);
+                window.location.href = "/becas.html";
+            }
+        })
+        .catch(err => {
+            mensaje.textContent = "Error al conectar con el servidor";
+            console.error(err);
+        });
+});

@@ -5,17 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Opciones de Becas - Sistema de Becas Institucionales</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/becas.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
     <header>
         <div class="brand">
-            <h1>Opciones de Becas</h1>
+            <h1>Sistema de Becas</h1>
         </div>
         <nav class="nav-buttons">
-            <a href="#" class="btn btn-outline">Mi historial</a>
+            <a href="historial.html" class="btn btn-outline">Mi historial</a>
+            <a href="home.html" class="btn btn-primary">Cerrar Sesión</a>
         </nav>
     </header>
 
@@ -28,66 +30,68 @@
         <div class="scholarship-grid">
             <!-- Academic Scholarship -->
             <article class="scholarship-card">
-                <img src="beca_academica.png" alt="Icono Beca Excelencia Académica">
+                <img class="card-image" src="imagenes/download (1).jpg" alt="Imagen Beca Excelencia Académica">
                 <div class="card-content">
                     <h3>Excelencia Académica</h3>
                     <p>Dirigida a estudiantes con un promedio sobresaliente. Nuestro objetivo es premiar la dedicación y
                         el alto rendimiento académico.</p>
+                    <a href="postulacion.html" class="btn btn-primary btn-apply">Postularse</a>
                 </div>
             </article>
 
             <!-- Sports Scholarship -->
             <article class="scholarship-card">
-                <img src="beca_deportiva.png" alt="Icono Beca Deportiva">
+                <img class="card-image" src="imagenes/deportiva.jpg" alt="Imagen Beca Deportiva">
                 <div class="card-content">
                     <h3>Talento Deportivo</h3>
                     <p>Para atletas destacados que representan a la institución. Buscamos apoyar el equilibrio entre el
                         deporte y los estudios.</p>
+                    <a href="postulacion.html" class="btn btn-primary btn-apply">Postularse</a>
                 </div>
             </article>
 
             <!-- Research Scholarship -->
             <article class="scholarship-card">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg fill='%232c5282'%3E%3Ccircle cx='100' cy='60' r='8'/%3E%3Cpath d='M95 70h10v50h-10z'/%3E%3Ccircle cx='100' cy='125' r='12'/%3E%3Cpath d='M85 125h30M100 110v30'/%3E%3Cpath d='M130 50l15 15-15 15M70 50L55 65l15 15'/%3E%3Ccircle cx='145' cy='65' r='4'/%3E%3Ccircle cx='55' cy='65' r='4'/%3E%3C/g%3E%3C/svg%3E"
-                    alt="Icono Beca Investigación">
+                <img class="card-image" src="imagenes/investigacion.jpg" alt="Imagen Beca Investigación">
                 <div class="card-content">
                     <h3>Investigación e Innovación</h3>
                     <p>Enfocada en estudiantes participando en proyectos científicos y tecnológicos. Fomentamos la
                         creación de nuevo conocimiento.</p>
+                    <a href="postulacion.html" class="btn btn-primary btn-apply">Postularse</a>
                 </div>
             </article>
 
             <!-- Social Service Scholarship -->
             <article class="scholarship-card">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg fill='%232c5282'%3E%3Cpath d='M100 140c-15-15-40-25-40-45 0-15 10-25 20-25 8 0 15 5 20 12 5-7 12-12 20-12 10 0 20 10 20 25 0 20-25 30-40 45z'/%3E%3Ccircle cx='70' cy='50' r='8'/%3E%3Ccircle cx='130' cy='50' r='8'/%3E%3Cpath d='M50 160h100M60 170h80'/%3E%3C/g%3E%3C/svg%3E"
-                    alt="Icono Beca Servicio Social">
+                <img class="card-image" src="imagenes/social.jpg" alt="Imagen Beca Servicio Social">
                 <div class="card-content">
                     <h3>Servicio Social</h3>
                     <p>Reconoce el compromiso con la comunidad y el voluntariado. Apoyamos a quienes dedican tiempo a
                         causas sociales y proyectos comunitarios.</p>
+                    <a href="postulacion.html" class="btn btn-primary btn-apply">Postularse</a>
                 </div>
             </article>
 
             <!-- Artistic Scholarship -->
             <article class="scholarship-card">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg fill='%232c5282'%3E%3Ccircle cx='60' cy='80' r='25' fill='none' stroke='%232c5282' stroke-width='6'/%3E%3Cpath d='M60 105v40M50 135h20M50 145h20'/%3E%3Cpath d='M120 60h30v40h-30zM135 100v30M125 120h20'/%3E%3Ccircle cx='135' cy='50' r='5'/%3E%3C/g%3E%3C/svg%3E"
-                    alt="Icono Beca Talento Artístico">
+                <img class="card-image" src="imagenes/arte.jpg" alt="Imagen Beca Talento Artístico">
                 <div class="card-content">
                     <h3>Talento Artístico</h3>
                     <p>Para estudiantes destacados en música, artes plásticas, teatro o danza. Promovemos la expresión
                         cultural y el desarrollo de habilidades artísticas.</p>
+                    <a href="postulacion.html" class="btn btn-primary btn-apply">Postularse</a>
                 </div>
             </article>
 
             <!-- Economic Need Scholarship -->
             <article class="scholarship-card">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg fill='%232c5282'%3E%3Cpath d='M100 50L70 80v60h60V80z' fill='none' stroke='%232c5282' stroke-width='6'/%3E%3Cpath d='M85 95h30v8h-30zM85 110h30v8h-30zM85 125h20v8h-20'/%3E%3Cpath d='M60 140c-10 5-15 10-15 15 0 8 15 15 55 15s55-7 55-15c0-5-5-10-15-15'/%3E%3C/g%3E%3C/svg%3E"
-                    alt="Icono Beca Necesidad Económica">
+                <img class="card-image" src="imagenes/economico.jpg" alt="Imagen Beca Necesidad Económica">
                 <div class="card-content">
                     <h3>Apoyo Económico</h3>
                     <p>Destinada a estudiantes con necesidades económicas que demuestren compromiso académico.
                         Facilitamos
                         el acceso a la educación superior.</p>
+                    <a href="postulacion.html" class="btn btn-primary btn-apply">Postularse</a>
                 </div>
             </article>
         </div>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel del Evaluador | Sistema de Becas</title>
+    <link rel="stylesheet" href="css/evaluador.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header class="main-header">
+        <div class="brand">
+            <h1>Sistema de Becas</h1>
+            <span>Panel del Evaluador</span>
+        </div>
+
+        <nav class="nav-buttons">
+            <a href="home.html" class="btn btn-outline">Cerrar sesión</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <span class="tag">Revisión</span>
+            <h1 class="page-title">Postulaciones Recibidas</h1>
+        </section>
+
+        <!-- Mensaje general -->
+        <p id="mensajeEvaluador" class="mensaje"></p>
+
+        <!-- Tabla de postulaciones -->
+        <div class="tabla-container">
+            <table class="tabla-postulaciones">
+                <thead>
+                    <tr>
+                        <th>Postulante</th>
+                        <th>Correo</th>
+                        <th>Tipo de Beca</th>
+                        <th>Fecha</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tablaPostulaciones">
+                    <!-- Filas dinámicas desde JS -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Mensaje cuando no hay postulaciones -->
+        <p id="sinPostulaciones" class="mensaje" style="display:none;">
+            No hay postulaciones pendientes de revisión.
+        </p>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Sistema de Becas. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="js/evaluador.js"></script>
+</body>
+
+</html>
