@@ -5,30 +5,49 @@
     <meta charset="UTF-8">
     <title>Inicio de Sesión</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/login_postulante.css">
-
-
-
+    <link rel="stylesheet" href="css/login_postulante.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <div>
-        <header class="header">
-            <h1>Inicio de Sesión - Postulante</h1>
-            <p>Inicia sesion para gestionar tus citas</p>
-        </header>
-        <form>
-            <label for="">Usuario:</label><br>
-            <input id="email" type="text" placeholder="Usuario">
-            <br>
-            <label for="">Contraseña:</label><br>
-            <input id="password" type="password" placeholder="********">
-        </form>
-        <button id="btnLogin">Iniciar sesion</button>
-        <p id="mensaje"></p>
-        <p>¿No tienes una cuenta? <a href="registro_postulante.html">Registrarse</a></p>
-    </div>
+    <header class="main-header">
+        <div class="brand">
+            <h1>Sistema de Becas Institucionales</h1>
+        </div>
+        <nav class="nav-buttons">
+            <a href="home.html" class="btn btn-outline"
+                style="border: 1px solid var(--primary-color); color: var(--primary-color); text-decoration: none; padding: 0.5rem 1rem; border-radius: 8px;">Volver
+                al Inicio</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="login-container">
+            <header class="login-header">
+                <h1>Inicio de Sesión</h1>
+                <p class="subtitle">Postulante</p>
+            </header>
+            <form id="formLogin" class="login-form">
+                <div class="form-group">
+                    <label for="email">Correo</label>
+                    <input id="email" type="email" class="form-control" placeholder="correo@gmail.com">
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input id="password" type="password" class="form-control" placeholder="********">
+                </div>
+                <p id="mensaje" class="message"></p>
+                <button type="submit" id="btnLogin" class="btn-login">Iniciar sesión</button>
+                <p class="register-link">¿No tienes una cuenta? <a href="registro_postulante.html">Registrarse</a></p>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Institución Educativa. Todos los derechos reservados.</p>
+    </footer>
 
 </body>
+<script src="/js/login_postulante.js"></script>
 
 </html>

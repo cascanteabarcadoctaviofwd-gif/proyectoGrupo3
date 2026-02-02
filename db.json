@@ -1,0 +1,57 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nombre": "Ana",
+      "apellido": "Dominguez",
+      "email": "ana@institucion.com",
+      "password": "1234",
+      "rol": "evaluador"
+    },
+    {
+      "id": 2,
+      "nombre": "Carlos",
+      "apellido": "Garcia",
+      "email": "carlos@institucion.com",
+      "password": "5678",
+      "rol": "evaluador"
+    },
+    {
+      "id": 1769916642081,
+      "nombre": "Juan",
+      "apellido": "Perez",
+      "email": "correo@gmail.com",
+      "password": "12234",
+      "rol": "postulante"
+    },
+    {
+      "id": 1769916901409,
+      "nombre": "Pedro",
+      "apellido": "Sanchez",
+      "email": "correo2@gmail.com",
+      "password": "1234",
+      "rol": "postulante"
+    },
+    {
+      "id": 1769924544238,
+      "nombre": "Kay",
+      "apellido": "Rainold Madrigal",
+      "email": "kayrainold@gmail.com",
+      "password": "1234",
+      "rol": "postulante"
+    }
+  ],
+  "postulaciones": [
+    {
+      "id": 1769999437407,
+      "nombreCompleto": "Juan Perez",
+      "correo": "correo@gmail.com",
+      "edad": "15",
+      "tipoBeca": "Talento Deportivo",
+      "situacion": "Mi situación socioeconómica es..\n",
+      "motivo": "Mi motivo de la solicitud es..\n",
+      "estado": "rechazada",
+      "fecha": "2026-02-02T02:30:37.407Z"
+    }
+  ]
+}

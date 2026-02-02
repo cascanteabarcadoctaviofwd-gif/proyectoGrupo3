@@ -1,43 +1,45 @@
-const btnRegistrar = document.getElementById("btnRegistrar");
+const formRegistro = document.getElementById("formRegistro");
 const mensaje = document.getElementById("mensaje");
 
-btnRegistrar.addEventListener("click", function () {
+console.log("JS de registro cargado");
 
+formRegistro.addEventListener("submit", function (evento) { //(evento es solo el nombre de la función)
+
+    console.log("Formulario enviado");
+    evento.preventDefault(); //“NO hagas lo que harías normalmente, recarga la página por defecto”
+
+    //Leer datos
     const nombre = document.getElementById("nombre").value;
     const apellido = document.getElementById("apellido").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
+    //Validar campos vacíos
     if (nombre === "" || apellido === "" || email === "" || password === "") {
         mensaje.textContent = "Completa todos los campos";
         return;
     }
 
-    const usuariosRegistrados = JSON.parse(localStorage.getItem("usuariosRegistrados")) || [];
+    //Enviar datos al servidor
+    fetch("http://localhost:2929/api/registro", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            nombre,
+            apellido,
+            email,
+            password
+        })
+    })
+        .then(res => res.json())
+        .then(data => {
+            mensaje.textContent = data.message;
 
-    const emailExiste = usuariosRegistrados.some(usuario => usuario.email === email);
-
-    if (emailExiste) {
-        mensaje.textContent = "El email ya esta registrado";
-        return;
-    }
-
-    const usuario = {
-        nombre: nombre,
-        apellido: apellido,
-        email: email,
-        password: password,
-    };
-
-    usuariosRegistrados.push(usuario);
-    localStorage.setItem("usuariosRegistrados", JSON.stringify(usuariosRegistrados));
-    mensaje.textContent = "Registro exitoso";
-
-    document.getElementById("nombre").value = "";
-    document.getElementById("apellido").value = "";
-    document.getElementById("email").value = "";
-    document.getElementById("password").value = "";
-
-
-
-})
+            if (data.ok) {
+                formRegistro.reset();
+                //window.location.href = "login_postulante.html";
+            }
+        });
+});
