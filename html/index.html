@@ -1,11 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Solicitud de Beca - Proyecto Grupo 3</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    
+    <div class="container">
+        <h1>Solicitud de Beca</h1>
+        <p class="subtitle">Complete los siguientes datos para procesar su solicitud.</p>
+
+        <form id="personalForm">
+            <!-- Datos Personales -->
+            <div class="form-group">
+                <label for="nombre">Nombre Completo</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Juan Pérez" required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="edad">Edad</label>
+                    <input type="number" id="edad" name="edad" min="12" max="99" required>
+                </div>
+                <div class="form-group">
+                    <label for="ingresos">Ingresos Mensuales ($)</label>
+                    <input type="number" id="ingresos" name="ingresos" step="0.01" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="nivelEducativo">Nivel Educativo</label>
+                <select id="nivelEducativo" name="nivelEducativo" required>
+                    <option value="" disabled selected>Seleccione una opción</option>
+                    <option value="primaria">Primaria</option>
+                    <option value="secundaria">Secundaria</option>
+                    <option value="tecnico">Técnico</option>
+                    <option value="universitario">Universitario</option>
+                    <option value="postgrado">Postgrado</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="situacionSocioeconomica">Situación Socioeconómica</label>
+                <select id="situacionSocioeconomica" name="situacionSocioeconomica" required>
+                    <option value="" disabled selected>Seleccione su situación</option>
+                    <option value="baja">Baja</option>
+                    <option value="media-baja">Media-Baja</option>
+                    <option value="media">Media</option>
+                    <option value="media-alta">Media-Alta</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="motivos">Motivos de la solicitud</label>
+                <textarea id="motivos" name="motivos" rows="4" placeholder="Explique por qué solicita la beca..." required></textarea>
+            </div>
+
+            <button type="submit">
+                <span>Enviar Solicitud</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            </button>
+        </form>
+    </div>
+    <script src="../js/script.js"></script>
 </body>
 </html>
